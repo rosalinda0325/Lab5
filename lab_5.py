@@ -40,6 +40,36 @@ main()
 
 """
 
+def main():
+    sentence = "enjoy the excellent band tonight"
+    dictionary = create_dictionary("textese.txt")
+    translate(sentence, dictionary)
+
+def create_dictionary(txt_file):
+    infile = open(txt_file, "r")
+    words = [word.rstrip() for word in infile]
+    infile.close()
+
+    print("words", words)
+    translation = {}
+    for word in words:
+        [k, v] = word.split(",")
+        translation[k] = v
+    return translation
+
+    return { 
+        "tonight" : "2nite", "late": "l8"
+    }
+
+
+def translate(sentence, dictionary):
+    print("From translate", sentence)
+    words = sentence.split() 
+    for word in words:
+        print(dictionary.get(word, word), " ", end="")
+
+main()
+
 
 
 
